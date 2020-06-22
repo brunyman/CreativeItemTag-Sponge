@@ -1,0 +1,76 @@
+# default config.yml for CreativeItemTag
+# config version 1.0.2
+
+
+#MySQL Database details
+Database:
+    Mysql:
+        #MySQL server address
+        Host: 127.0.0.1
+        #MySQL server port (default 3306)
+        Port: 3306
+        #Database name (NOTE! You need to create the database, then the plugin will create the tables.)
+        DatabaseName: 'mydatabase'
+        #Table name (the plugin will auto create them)
+        TableName: 'creative_blocks'
+        #User name
+        User: 'admin'
+        #User password
+        Password: 'cheesecake'
+        SSL: false
+    #This maintenance task runs async with a 2 min delay after the server starts.
+    RemoveInactiveUsers:
+        #Enable or disable database clean up of old accounts. | (true or false)
+        enabled: false
+        #Inactivity in days. Default 60 days.
+        inactivity: 60
+
+
+#General settings.
+#Minecraft Color and Format Codes: http://minecraft.gamepedia.com/Formatting_codes
+General:
+    #The Creative Tag format. | Supports color and format codes.
+    #The place holder  %Name%  will be replaced by the player name.
+    CreativeTag: '&fSpawned in by:&5 %Name%'
+    
+    NbtCopyRestrict:
+    - 'minecraft:white_shulker_box'
+    
+    #Add the tag on spawned items by commands?
+    AddTagWhen:
+         #Add the tag on items spawned by essentials item command: /i or /item  |  (true or false)
+         itemCmd: false
+    
+    #Should we keep the creative tag when crafting, smelting or brewing?
+    KeepTagWhen:
+        #If a creative spawned item is used to craft something. | (true or false)
+        Crafting: true
+        #If a creative spawned item is used in a furnace. | (true or false)
+        Smelting: true
+        #If a creative spawned potion ingredient is used. | (true or false)
+        Brewing: true
+    
+    #Disabled worlds. In this worlds the creative tag will not be placed on creative items.
+    WorldsDisabled:
+    - creativebuild
+    - creativeplay
+    
+    #Auto data save for creative placed blocks in minutes. | Default 6 min.
+    DataSaveInterval: 6
+
+#Chat messages.
+ChatMessages:    
+    #Messages. | Supports color and format codes.
+    creativeItem: '&4[System] &cYou cant use a creative item spawned by someone else!'
+    creativePickup: '&4[System] &cYou cant pickup a creative item spawned by someone else!'
+    creativeDrop: '&4[System] &cYou cant drop items while in creative mode!'
+    configReloadComplete: '&2[System] &aConfig reload complete!'
+    configReloadFailed: '&4[System] &cCould not reload config! Check logs.'
+    noPermission: '&4[System] &cYou do not have permission!'
+    clearTagComplete: '&2[System] &aCreative Item Tag removed!'
+    clearTagFailed: '&4[System] &cCould not find a Creative Item Tag on the item you hold in your hands!'
+    clearNoItem: '&4[System] &cPlace the item in your hand and run the command again!'
+    NoPermission: '&4[System] &cYou don''t have permission!'
+    CmdHelp: '&4[System] &cAvailable commands:&6 /creativetag reload , /creativetag clear'
+    CmdReload: '&2[System] &aConfig reload complete!'
+    ItemCmdUsage: '&4[System] &cCommand usage:&6 /item <ItemID/Name> <Amount>'
